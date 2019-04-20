@@ -74,8 +74,8 @@ public class GoogleOauthController {
 	@ApiResponses(@ApiResponse(code = 302, message = "server successfully redirected client for oauth", responseHeaders = @ResponseHeader(name = "Location", response = java.net.URL.class)))
 	public void redirectForOauth2(HttpServletResponse response) throws URISyntaxException, IOException {
 		String redirectUrl = new URIBuilder(OAUTH_URL).addParameter("scope", SCOPE)
-				.addParameter("access_type", ACCESS_TYPE).addParameter("redirect_uri", REDIRECT_URI)
-				.addParameter("response_type", RESPONSE_TYPE).addParameter("client_id", CLIENT_ID).build().toString();
+				.addParameter("access_type", ACCESS_TYPE).addParameter("https://redrive.herokuapp.com/redirect", REDIRECT_URI)
+				.addParameter("response_type", RESPONSE_TYPE).addParameter("554582364522-b7vkm5i00fnp48jkusnv9au33un457ae.apps.googleusercontent.com", CLIENT_ID).build().toString();
 		response.sendRedirect(redirectUrl);
 	}
 
@@ -105,9 +105,9 @@ public class GoogleOauthController {
 		// add request parameters
 		List<NameValuePair> parameters = new ArrayList<>();
 		parameters.add(new BasicNameValuePair("code", code));
-		parameters.add(new BasicNameValuePair("client_id", CLIENT_ID));
-		parameters.add(new BasicNameValuePair("client_secret", CLIENT_SECRET));
-		parameters.add(new BasicNameValuePair("redirect_uri", REDIRECT_URI));
+		parameters.add(new BasicNameValuePair("554582364522-b7vkm5i00fnp48jkusnv9au33un457ae.apps.googleusercontent.com", CLIENT_ID));
+		parameters.add(new BasicNameValuePair("odmoerf8TCwTgwog2SXYIZ82", CLIENT_SECRET));
+		parameters.add(new BasicNameValuePair("https://redrive.herokuapp.com/redirect", REDIRECT_URI));
 		parameters.add(new BasicNameValuePair("grant_type", GRANT_TYPE));
 		httpPost.setEntity(new UrlEncodedFormEntity(parameters));
 
